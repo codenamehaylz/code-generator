@@ -1,4 +1,5 @@
 import itertools
+from flask import Flask
 
 word = input("Input the word or short phrase that you wish to create a code from: ")
 code_length = int(input("How many characters should the generated code have?: "))
