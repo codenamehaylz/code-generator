@@ -5,20 +5,30 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = '0e1226ee99bc01c03ef7854b56215ba535246ffc00af41c2'
 
 word = ["Word"]
+length = [0]
+first_letter_option = []
 
 @app.route("/")
 def hello():
-    return render_template('index.html', word=word)
+    return render_template('index.html', word=word, length=length, first_letter_option=first_letter_option)
 
 @app.route("/generate/", methods=("GET", "POST"))
 def generate_codes():
     if request.method == "POST":
-        entered_word = request.form['word']
+        entered_word = request.form.get('word')
+        code_length = request.form.get('characters')
+        option = request.form.get('first_char')
+
+
         if not entered_word:
             flash("You must enter a word or phrase!")
         else:
             word.clear()
             word.append(entered_word)
+            length.clear()
+            length.append(code_length)
+            first_letter_option.clear()
+            first_letter_option.append(option)
             return redirect(url_for('hello'))
         
     return render_template('generate.html')
