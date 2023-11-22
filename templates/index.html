@@ -3,4 +3,6 @@
 {% block content %}
     <h1>{% block title %} Index {% endblock %}</h1>
     <h1>This is the index page</h1>
+    <h2>Word entered:
+        {% for word in word %} {{ word }} {% endfor %}</h2>
 {% endblock %}
