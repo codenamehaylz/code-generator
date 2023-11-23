@@ -26,6 +26,9 @@ def generate():
         if not word:
             flash("You must enter a word or phrase!")
             
+        if len(word) < length:
+            flash("Please enter a word that is longer than number of characters selected.")
+
         else:
             # Clear variables first
             user_input.clear()
