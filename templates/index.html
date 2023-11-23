@@ -3,9 +3,5 @@
 {% block content %}
     <h1>{% block title %} Index {% endblock %}</h1>
     <h1>This is the index page</h1>
-    <h2>Word entered:
-        {% for word in word %} {{ word }} {% endfor %}</h2>
 
-    {% for length in length %} <p>{{ length }}</p> {% endfor %}
-    {% for option in first_letter_option %} <p>{{ option }}</p> {% endfor %}
 {% endblock %}

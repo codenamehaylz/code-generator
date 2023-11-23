@@ -1,35 +1,36 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-from main import generate_code
+from generate_function import generate_code
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = '0e1226ee99bc01c03ef7854b56215ba535246ffc00af41c2'
 
-word = ["Word"]
-length = [0]
-first_letter_option = []
+user_input = [{'word': 'Word',
+               'length': 2,
+               'first_letter_option': ''}]
+
 
 @app.route("/")
 def hello():
-    return render_template('index.html', word=word, length=length, first_letter_option=first_letter_option)
+    return render_template('index.html')
+
+@app.route("/result/")
+def result():
+    return render_template('result.html', user_input = user_input)
 
 @app.route("/generate/", methods=("GET", "POST"))
 def generate_codes():
     if request.method == "POST":
-        entered_word = request.form.get('word')
-        code_length = request.form.get('characters')
+        word = request.form.get('word')
+        length = request.form.get('characters')
         option = request.form.get('first_char')
 
 
-        if not entered_word:
+        if not word:
             flash("You must enter a word or phrase!")
         else:
-            word.clear()
-            word.append(entered_word)
-            length.clear()
-            length.append(code_length)
-            first_letter_option.clear()
-            first_letter_option.append(option)
-            return redirect(url_for('hello'))
+            user_input.clear()
+            user_input.append({'word': word, 'length': length, 'first_letter_option': option})
+            return redirect(url_for('result'))
         
     return render_template('generate.html')
 

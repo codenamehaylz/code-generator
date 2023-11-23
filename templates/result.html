@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1>You entered:</h1>
+    {% for input in user_input %} 
+    <h2>{{ input['word'] }}</h2>
+    <h2>{{ input['length'] }}</h2>
+    <h2>{{ input['first_letter_option'] }}</h2>
+    {% endfor %}
+</div>
+
+{% endblock %}
