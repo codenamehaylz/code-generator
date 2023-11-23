@@ -9,6 +9,11 @@ The idea for this program came to me when learning about permutations in Python'
 
 ## Instructions
 Fill in the form and press submit.
+
 **Word / Phrase** - Type in the word or phrase that you wish to create a code from. 
+
 **Number of characters** - The desired length of your code
+
 **Code must begin with the first character**? - Select this option if you want to ensure that your generated codes all start with the first character of your word / phrase.
+
+A warning will be displayed if you submit without any input, or if the input is shorter than the number selected for 'number of characters'.
