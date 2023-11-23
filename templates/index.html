@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Generate {% endblock %}</h1>
+    <h1>Generate A Code</h1>
+
+    <p>Use the form below to generate codes from a word or phrase.<br>The program will find all combinations of the characters in your word or phrase, and return a list of codes based on your selections.</p>
+    <p>For example, (Word: Hey, Characters: 3, ✅) will generate the codes: HEY, HYE</p>
+
+
     <form method="post">
-        <label for="word">Word/phrase</label>
+        <label for="word">Word / Phrase:</label>
         <br>
-        <input type="text" name="word"
-               placeholder="Type the word or phrase here"
+        <input type="text" id="word" name="word"
+               placeholder="Type here"
                value="{{ request.form['word'] }}"></input>
         <br>
-        <label for="characters">Number of characters</label>
+        <label for="characters">Number of characters:</label>
         <br>
         <select id="characters" name="characters">
             <option value="2">2</option>
