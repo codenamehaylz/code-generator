@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>{% block title %} Results {% endblock %}</h1>
+<a href="{{ url_for('generate')}}"><button>Go Back</button></a>
 <div>
     <h2>You entered:
     {% for input in user_input %} 

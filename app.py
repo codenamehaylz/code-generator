@@ -19,7 +19,7 @@ generated_codes = []
 @app.route("/", methods=("GET", "POST"))
 def generate():
     if request.method == "POST":
-        word = request.form.get('word')
+        word = request.form.get('word').replace(" ", "")
         length = int(request.form.get('characters'))
         option = request.form.get('first_char')
 
