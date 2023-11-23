@@ -4,9 +4,10 @@
 <div>
     <h1>You entered:</h1>
     {% for input in user_input %} 
-    <h2>{{ input['word'] }}</h2>
-    <h2>{{ input['length'] }}</h2>
-    <h2>{{ input['first_letter_option'] }}</h2>
+    <h2>{{ input['word'] }}, {{ input['length'] }}, {{ input['first_letter_option'] }}</h2>
+    {% endfor %}
+    {% for i in range(0, len) %} 
+    <p>{{ generated_codes[i] }}</p>
     {% endfor %}
 </div>
 
