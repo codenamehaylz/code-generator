@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Results {% endblock %}</h1>
+<a href="{{ url_for('generate')}}"><button>Go Back</button></a>
+<div>
+    <h2>You entered:
+    {% for input in user_input %} 
+        '{{ input['word'] }}', 
+        {{ input['length'] }} characters, 
+        {% if input['first_letter_option'] == 'on' %}
+            must start with {{ input['word'][0] }}
+        {% else %}
+            all combinations
+        {% endif %}
+    {% endfor %} </h2>
+    {% for i in range(0, len) %} 
+    <p>{{ generated_codes[i] }}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
