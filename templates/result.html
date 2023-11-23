@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1>{% block title %} Results {% endblock %}</h1>
 <div>
-    <h1>You entered:</h1>
+    <h2>You entered:</h2>
     {% for input in user_input %} 
-    <h2>{{ input['word'] }}, {{ input['length'] }}, {{ input['first_letter_option'] }}</h2>
+    <h3>{{ input['word'] }}, {{ input['length'] }}, {{ input['first_letter_option'] }}</h3>
     {% endfor %}
     {% for i in range(0, len) %} 
     <p>{{ generated_codes[i] }}</p>

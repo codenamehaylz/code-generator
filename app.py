@@ -4,6 +4,8 @@ from generate_function import generate_codes
 app = Flask(__name__)
 app.config["SECRET_KEY"] = '0e1226ee99bc01c03ef7854b56215ba535246ffc00af41c2'
 
+
+# Store user input and generated codes to display on results page
 user_input = [{'word': 'Word',
                'length': 2,
                'first_letter_option': ''}]
@@ -11,18 +13,10 @@ user_input = [{'word': 'Word',
 generated_codes = []
 
 
-@app.route("/")
-def hello():
-    return render_template('index.html')
+# -- ENDPOINTS --
 
-@app.route("/result/")
-def result():
-    return render_template('result.html', 
-                           user_input=user_input,
-                           generated_codes=generated_codes,
-                           len=len(generated_codes))
-
-@app.route("/generate/", methods=("GET", "POST"))
+# Index page showing input form
+@app.route("/", methods=("GET", "POST"))
 def generate():
     if request.method == "POST":
         word = request.form.get('word')
@@ -40,7 +34,16 @@ def generate():
                 generated_codes.append(code)
             return redirect(url_for('result'))
         
-    return render_template('generate.html')
+    return render_template('index.html')
+
+
+# Results page to display generated codes
+@app.route("/result/")
+def result():
+    return render_template('result.html', 
+                           user_input=user_input,
+                           generated_codes=generated_codes,
+                           len=len(generated_codes))
 
 
 if __name__ == '__main__':
