@@ -25,13 +25,17 @@ def generate():
 
         if not word:
             flash("You must enter a word or phrase!")
+            
         else:
+            # Clear variables first
             user_input.clear()
+            generated_codes.clear()
+            # Store user's inputs and generated codes in our variables
             user_input.append({'word': word, 'length': length, 'first_letter_option': option})
             codes = generate_codes(word, length, option)
-            generated_codes.clear()
             for code in codes:
                 generated_codes.append(code)
+                
             return redirect(url_for('result'))
         
     return render_template('index.html')
