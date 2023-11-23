@@ -1,20 +1,26 @@
 import itertools
 
-# word = input("Input the word or short phrase that you wish to create a code from: ")
-# code_length = int(input("How many characters should the generated code have?: "))
-# first_letter_option = input("Should the generated code start with the first letter of your word/phrase?: ")
-
 def generate_codes(word, length, first_letter):
-    generated = itertools.permutations(word, length)
+    generate = itertools.permutations(word, length)
 
-    results = []
+    results_of_generated = []
+    codes = []
 
-    for i in generated:
+    for i in generate:
         if first_letter == 'on':
-            if i not in results and i[0] == word[0]:
-                results.append(i)
+            if i not in results_of_generated and i[0] == word[0]:
+                results_of_generated.append(i)
         else:
-            if i not in results:
-                results.append(i)
-    
-    return results
+            if i not in results_of_generated:
+                results_of_generated.append(i)
+
+    for i in results_of_generated:
+        code = ''
+        for j in i:
+            code += j
+
+        codes.append(code.upper())
+
+    return codes
+
+# print(generate_codes('Hayley', 3, 'on'))
