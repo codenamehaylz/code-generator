@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
 from generate_function import generate_codes
+import os
+import uuid
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = '0e1226ee99bc01c03ef7854b56215ba535246ffc00af41c2'
+SECRET_KEY = os.environ.get('APP_SECRET_KEY', uuid.uuid4().hex)
+app.config["SECRET_KEY"] = SECRET_KEY
 
 
 # Store user input and generated codes to display on results page
